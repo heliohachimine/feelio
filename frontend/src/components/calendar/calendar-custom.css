@@ -1,0 +1,43 @@
+.react-calendar {
+    width: 100%;
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 1.5rem;
+    font-size: 1.2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  .react-calendar__tile {
+    padding: 1rem 0;
+  }
+
+  .dark .react-calendar {
+    background-color: #1f2937;
+    color: white;
+  }
+
+  .dark .react-calendar__tile--active {
+    background: #8b5cf6;
+    color: white;
+  }
+
+/* Sentimentos */
+.mood-positive {
+  background-color: #4ade80 !important; /* green-400 */
+  color: black !important;
+  border-radius: 10%;
+}
+
+.mood-neutral {
+  background-color: #facc15 !important; /* yellow-400 */
+  color: black !important;
+  border-radius: 10%;
+}
+
+.mood-negative {
+  background-color: #f87171 !important; /* red-400 */
+  color: black !important;
+  border-radius: 10%;
+}
