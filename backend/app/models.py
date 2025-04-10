@@ -5,9 +5,17 @@ from datetime import date
 from datetime import datetime
 
 class FeelingEnum(enum.Enum):
-    positive = 'positive'
-    negative = 'negative'
-    neutral = 'neutral'
+    joy = 'joy'
+    sadness = 'sadness'
+    anger = 'anger'
+    love = 'love'
+    afraid = 'afraid'
+    peace = 'peace'
+    surprise = 'surprise'
+    hope = 'hope'
+    nostalgia = 'nostalgia'
+    confidence = 'confidence'
+    none = 'none'
 
 class Daily(db.Model):
     __tablename__ = 'daily'

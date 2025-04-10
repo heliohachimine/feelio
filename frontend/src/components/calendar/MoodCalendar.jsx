@@ -40,14 +40,7 @@ export default function MoodCalendar() {
   const tileClassName = ({ date }) => {
     const dateStr = date.toISOString().split("T")[0];
     const mood = moodMap[dateStr];
-
-    console.log(mood);
-
-    if (mood === "positive") return "mood-positive";
-    if (mood === "negative") return "mood-negative";
-    if (mood === "neutral") return "mood-neutral";
-
-    return null;
+    return mood;
   };
 
   return (
