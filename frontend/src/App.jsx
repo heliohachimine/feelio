@@ -1,12 +1,10 @@
-import { useState } from "react";
 import "react-calendar/dist/Calendar.css";
-import Landing from "./pages/landing";
 import './index.css'
+import Landing from "./pages/Landing";
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(true);
   return (
-    <div className={darkMode ? "dark" : ""}>
+    <div>
       <Landing/>
       {/* <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition duration-500">
         <header className="flex justify-between items-center p-6">
