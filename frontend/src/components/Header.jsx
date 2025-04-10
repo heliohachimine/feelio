@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import LanguageSelector from "./LanguageSelector";
 
 export default function Header() {
   return (
@@ -13,16 +15,14 @@ export default function Header() {
 
       {/* Botões à direita */}
       <div className="flex items-center gap-4">
-        <button className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
-          Login
-        </button>
+        <Link to="/login">
+          <button className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+            Login
+          </button>
+        </Link>
 
         {/* Select de idioma */}
-        <select className="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white px-3 py-2 rounded-lg focus:outline-none">
-          <option value="pt">PT</option>
-          <option value="en">EN</option>
-          <option value="es">ES</option>
-        </select>
+        <LanguageSelector />
       </div>
     </motion.header>
   );
