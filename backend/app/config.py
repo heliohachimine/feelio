@@ -1,5 +1,5 @@
 import os
 
 class Config:
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///banco.db'
+    SQLALCHEMY_DATABASE_URI = os.getenv("DATABAE_URL")
     SQLALCHEMY_TRACK_MODIFICATIONS = False

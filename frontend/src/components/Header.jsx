@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import LanguageSelector from "./LanguageSelector";
 
 export default function Header() {
   return (
@@ -22,7 +21,11 @@ export default function Header() {
         </Link>
 
         {/* Select de idioma */}
-        <LanguageSelector />
+        <select className="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white px-3 py-2 rounded-lg focus:outline-none">
+          <option value="pt">PT</option>
+          <option value="en">EN</option>
+          <option value="es">ES</option>
+        </select>
       </div>
     </motion.header>
   );
