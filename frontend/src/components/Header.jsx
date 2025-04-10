@@ -1,34 +1,29 @@
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Header() {
-  const [offsetY, setOffsetY] = useState(0);
-
-  const handleScroll = () => {
-    setOffsetY(window.scrollY);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <header
-      className="relative h-[60vh] w-full overflow-hidden flex items-center justify-center text-white"
-      style={{
-        backgroundImage: `url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1600&q=80')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        transform: `translateY(${offsetY * 0.5}px)`, // parallax effect
-      }}
+    <motion.header
+      className="w-full px-6 py-4 flex items-center justify-between bg-white dark:bg-gray-900 shadow-md fixed top-0 z-50"
+      initial={{ y: -60, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
     >
-      <div className="text-center z-10 bg-black/40 p-6 rounded-xl backdrop-blur-sm">
-        <h1 className="text-5xl font-bold mb-2">Welcome to Moona</h1>
-        <p className="text-lg text-gray-200">Your journey of emotional awareness starts here.</p>
-      </div>
+      {/* Logo à esquerda */}
+      <h1 className="text-2xl font-bold text-purple-600">Feelio</h1>
 
-      {/* Optional overlay */}
-      <div className="absolute top-0 left-0 w-full h-full bg-black opacity-30 z-0" />
-    </header>
+      {/* Botões à direita */}
+      <div className="flex items-center gap-4">
+        <button className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+          Login
+        </button>
+
+        {/* Select de idioma */}
+        <select className="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white px-3 py-2 rounded-lg focus:outline-none">
+          <option value="pt">PT</option>
+          <option value="en">EN</option>
+          <option value="es">ES</option>
+        </select>
+      </div>
+    </motion.header>
   );
 }

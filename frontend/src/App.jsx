@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import "react-calendar/dist/Calendar.css";
-import MoodCalendar from "./components/calendar/MoodCalendar";
+import Landing from "./pages/landing";
+import './index.css'
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(true);
   return (
     <div className={darkMode ? "dark" : ""}>
-      <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition duration-500">
+      <Landing/>
+      {/* <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition duration-500">
         <header className="flex justify-between items-center p-6">
           <button
             className="border px-4 py-1 rounded text-sm"
@@ -34,7 +35,7 @@ export default function App() {
             <MoodCalendar/>
           </div>
         </motion.main>
-      </div>
+      </div> */}
     </div>
   );
 }
