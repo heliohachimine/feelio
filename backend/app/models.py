@@ -3,6 +3,8 @@ from sqlalchemy import Enum
 import enum
 from datetime import date
 from datetime import datetime
+from sqlalchemy.orm import validates
+
 
 class FeelingEnum(enum.Enum):
     joy = 'joy'
@@ -22,7 +24,14 @@ class Daily(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.Text, nullable=False)
     feeling = db.Column(Enum(FeelingEnum), nullable=False)
+    humor_score = db.Column(db.Integer, nullable=False, default=0, )
     date = db.Column(db.Date, nullable=False, default=date.today)
+
+    @validates('humor_score')
+    def validate_humor_score(self, key, value):
+        if value < -5 or value > 5:
+            raise ValueError("humor_score must be between -5 and 5")
+        return value
 
     def to_dict(self):
         return {
