@@ -2,7 +2,7 @@ import random
 from datetime import date, timedelta
 
 from app import create_app
-from app.models import db, Daily, FeelingEnum
+from app.models import db, Daily, FeelingEnum, User
 
 # Inicializa a app Flask
 app = create_app()
@@ -42,6 +42,8 @@ def gerar_dados_ficticios(n=20):
 
 # Executa dentro do contexto da app Flask
 with app.app_context():
+    User.__table__.drop(db.engine)
+    User.__table__.create(db.engine)
     # DROP e CREATE na tabela daily
     Daily.__table__.drop(db.engine)
     Daily.__table__.create(db.engine)

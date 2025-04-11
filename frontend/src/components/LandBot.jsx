@@ -35,14 +35,13 @@ export default function LandBot({ onResponse, currentSection, responseType="defa
 
 
   const initialMessage = getMessageForSection(currentSection, responseType);
-  console.log('passou aqui');
   return (
     <div className="min-h-screen flex flex-col pt-24 pl-8">
       <div className="flex justify-start">
         <div className="flex items-start gap-3">
-          <div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold">
-            IA
-          </div>
+        <div className="w-10 md:w-12 aspect-square bg-purple-600 rounded-full flex items-center justify-center text-white font-bold shrink-0">
+  IA
+</div>
           <div className="bg-white text-gray-900 rounded-2xl px-5 py-3 max-w-xs shadow-md">
             {!typingFinished && (
               <TypingText
@@ -64,7 +63,8 @@ export default function LandBot({ onResponse, currentSection, responseType="defa
             onClick={() => onResponse("positive")}
             className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-full shadow-md hover:shadow-lg transform hover:scale-105 transition duration-300"
           >
-            Tive um dia bom 😊
+            <span className="block md:hidden text-xl">😊</span>
+            <span className="hidden md:block">Tive um dia bom</span>
           </button>
           <button
             onClick={() => onResponse("negative")}

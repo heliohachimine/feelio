@@ -2,7 +2,6 @@ import { useRef, useEffect, useState } from "react";
 import Hero from ".././components/Hero";
 import BenefitsSection from "../components/BenefitsSection";
 import FaqSection from "../components/FaqSection";
-import Header from "../components/Header";
 import FeatureCards from "../components/FeatureCards";
 import LandBot from "../components/LandBot";
 
@@ -50,20 +49,31 @@ export default function Landing() {
 
   return (
     <div className="text-white min-h-screen">
-      <Header />
       <div className="fixed top-0 left-0 w-full h-64 bg-gradient-to-b from-black/90 to-transparent z-40 pointer-events-none" />
 
-      <div className="fixed left-1/2 transform -translate-x-1/2 flex items-start gap-3 z-50">
-        <LandBot onResponse={handleResponse} currentSection={currentSection} responseType={responseType}/>
+      <div className="fixed top-24 w-full flex justify-center z-50 px-4">
+        <LandBot
+          onResponse={handleResponse}
+          currentSection={currentSection}
+          responseType={responseType}
+        />
       </div>
       <div ref={heroRef} data-section="hero" className="scroll-mt-32 pt-16">
         <Hero />
       </div>
-      <div ref={featuresRef} data-section="features" className="scroll-mt-32 pt-16">
+      <div
+        ref={featuresRef}
+        data-section="features"
+        className="scroll-mt-32 pt-16"
+      >
         <FeatureCards />
       </div>
 
-      <div ref={benefitsRef} data-section="benefits"className="scroll-mt-32 pt-16">
+      <div
+        ref={benefitsRef}
+        data-section="benefits"
+        className="scroll-mt-32 pt-16"
+      >
         <BenefitsSection />
       </div>
 
