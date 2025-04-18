@@ -23,21 +23,69 @@
     color: white;
   }
 
-/* Sentimentos */
-.mood-positive {
-  background-color: #4ade80 !important; /* green-400 */
+/* Feelings */
+.joy {
+  background-color: #fdef95 !important;
   color: black !important;
   border-radius: 10%;
 }
 
-.mood-neutral {
-  background-color: #facc15 !important; /* yellow-400 */
+.sadness {
+  background-color: #c7e6f2 !important;
   color: black !important;
   border-radius: 10%;
 }
 
-.mood-negative {
-  background-color: #f87171 !important; /* red-400 */
+.anger {
+  background-color: #f7b445 !important;
+  color: black !important;
+  border-radius: 10%;
+}
+
+.love {
+  background-color: #f9c9c9 !important;
+  color: black !important;
+  border-radius: 10%;
+}
+
+.afraid {
+  background-color: #c8b4e3 !important;
+  color: black !important;
+  border-radius: 10%;
+}
+
+.peace {
+  background-color: #b8e4c2 !important;
+  color: black !important;
+  border-radius: 10%;
+}
+
+.surprise {
+  background-color: #fcddb5 !important;
+  color: black !important;
+  border-radius: 10%;
+}
+
+.hope {
+  background-color: #d3eca7 !important;
+  color: black !important;
+  border-radius: 10%;
+}
+
+.nostalgia {
+  background-color: #ebd1b4 !important;
+  color: black !important;
+  border-radius: 10%;
+}
+
+.confidence {
+  background-color: #a2d3da !important;
+  color: black !important;
+  border-radius: 10%;
+}
+
+.none {
+  background-color: #f7b445 !important;
   color: black !important;
   border-radius: 10%;
 }
