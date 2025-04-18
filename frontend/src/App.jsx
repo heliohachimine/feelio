@@ -1,6 +1,6 @@
+import { useState } from "react";
 import "react-calendar/dist/Calendar.css";
 import "./index.css";
-import Landing from "./pages/Landing";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -9,24 +9,28 @@ import { AuthProvider } from "./context/AuthContext";
 import PrivateRoute from "./components/PrivateRoute";
 import Header from "./components/Header";
 
+
 export default function App() {
+  const [darkMode, setDarkMode] = useState(false);
   return (
     <AuthProvider>
       <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="login" element={<Login />} />
-          <Route path="signup" element={<Signup />} />
-          <Route
-            path="home"
-            element={
-              <PrivateRoute>
-                <Home />
-              </PrivateRoute>
-            }
-          />
-        </Routes>
+        <div className={darkMode ? "dark" : ""}>
+          <Header onClickDarkMode={setDarkMode} darkMode={darkMode} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="login" element={<Login />} />
+            <Route path="signup" element={<Signup />} />
+            <Route
+              path="home"
+              element={
+                <PrivateRoute>
+                  <Home />
+                </PrivateRoute>
+              }
+            />
+          </Routes>
+        </div>
       </Router>
     </AuthProvider>
   );

@@ -1,9 +1,13 @@
+import { HeartIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-export default function Header() {
+import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
+
+export default function Header({onClickDarkMode, darkMode}) {
   const { user } = useAuth();
+  console.log(darkMode);
 
   return (
     <motion.header
@@ -12,13 +16,29 @@ export default function Header() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Logo à esquerda */}
-      <Link to={user ? "/home" : "/"}>
-        <h1 className="text-2xl font-bold text-purple-600">Feelio</h1>
-      </Link>
+      <div className="text-center z-10 bg-black/40 p-6 rounded-xl backdrop-blur-sm">
+        <h1 className="text-5xl font-bold mb-2">
+          Welcome to feel.io <HeartIcon className="w-6 h-6" />
+        </h1>
+        <p className="text-lg text-gray-200">
+          Feel. Record. Discover. Each emotion is part of your journey
+        </p>
+      </div>
 
       {/* Botões à direita */}
       <div className="flex items-center gap-4">
+      <button
+            className="border mt-80 px-4 py-1 rounded text-sm"
+            onClick={() => onClickDarkMode(!darkMode)}
+          >
+            <p>
+              {darkMode ? (
+                <SunIcon className="h-6 w-6 stroke-main-purple_500" />
+              ) : (
+                <MoonIcon className="h-6 w-6 stroke-main-purple_500" />
+              )}
+            </p>
+          </button>
         {!user && (
           <Link to="/login">
             <button className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
