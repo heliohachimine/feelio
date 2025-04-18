@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { HeartIcon } from "@heroicons/react/24/solid";
 
 export default function Header() {
   const [offsetY, setOffsetY] = useState(0);
@@ -23,8 +24,12 @@ export default function Header() {
       }}
     >
       <div className="text-center z-10 bg-black/40 p-6 rounded-xl backdrop-blur-sm">
-        <h1 className="text-5xl font-bold mb-2">Welcome to Moona</h1>
-        <p className="text-lg text-gray-200">Your journey of emotional awareness starts here.</p>
+        <h1 className="text-5xl font-bold mb-2">
+          Welcome to feel.io <HeartIcon />
+        </h1>
+        <p className="text-lg text-gray-200">
+          Feel. Record. Discover. Each emotion is part of your journey
+        </p>
       </div>
 
       {/* Optional overlay */}

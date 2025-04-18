@@ -51,7 +51,7 @@ export default function MoodCalendar() {
   };
 
   return (
-    <div className="w-full flex justify-center">
+    <div>
       <Calendar
         tileClassName={tileClassName}
         tileContent={({ date }) => {
