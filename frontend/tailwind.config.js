@@ -11,10 +11,9 @@ export default {
           grey: "#f4f4f4",
           success: "#149700",
           error: "#e20d18",
-          dimWhite: "rgba(255, 255, 255, 0.7)",
-          dimBlue: "rgba(9, 151, 124, 0.1)",
         },
         main: {
+          purple_900: "#33304c",
           purple_500: "#867bdf",
           purple_400: "#a295fc",
           purple_200: "#cdc7fd",
@@ -36,11 +35,11 @@ export default {
           nostalgia: "#f1d3cc",
           trust: "#a2d3da",
         },
-        fontFamily: {
-          poppins: ["Poppins", "sans-serif"],
-          dm: ["DM Sans", "sans-serif"],
-          montserrat: ["Montserrat", "sans-serif"],
-        },
+      },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+        dm: ["DM Sans", "sans-serif"],
+        montserrat: ["Montserrat", "sans-serif"],
       },
       screens: {
         xs: "480px",
@@ -50,6 +49,31 @@ export default {
         lg: "1200px",
         xl: "1700px",
       },
+      animation: {
+        draw: 'draw 15s forwards',
+      },
+      keyframes: {
+        draw: {
+          to: {
+            "stroke-dasharray": "0",
+          },
+        }
+      },
+      backgroundImage:{
+        "waves": "url('./src/assets/waves.svg')",
+      },
+      spacing: {
+        32: "8rem",
+        64: "16rem",
+        128: "32rem",
+      },
+      borderWidth: {
+        6: "6px",
+      },
+    
+      strokeWidth:{
+        20: "20px",
+      }
     },
     plugins: [],
   },
