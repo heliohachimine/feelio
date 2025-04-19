@@ -10,9 +10,6 @@ export default function Home() {
       <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition duration-500">
         <motion.main
           className="flex flex-col items-center mt-10"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
         >
           <div className="bg-main-purple_200">
             <h2 className="text-4xl  font-semibold mb-4 text-center">

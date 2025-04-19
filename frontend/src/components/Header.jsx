@@ -11,10 +11,7 @@ export default function Header({onClickDarkMode, darkMode}) {
 
   return (
     <motion.header
-      className="w-full px-6 py-4 flex items-center justify-between bg-white dark:bg-gray-900 shadow-md fixed top-0 z-50"
-      initial={{ y: -60, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      className="w-full px-6 py-4 flex bg-main-purple_100 dark:bg-gray-900 shadow-md fixed top-0 z-50"
     >
       <div className="text-center z-10 bg-black/40 p-6 rounded-xl backdrop-blur-sm">
         <h1 className="text-5xl font-bold mb-2">
