@@ -37,8 +37,8 @@ export default {
         },
       },
       fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
         dm: ["DM Sans", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],
       },
       screens: {
@@ -60,7 +60,7 @@ export default {
         }
       },
       backgroundImage:{
-        "waves": "url('./src/assets/waves.svg')",
+        "waves": "url('./src/assets/backgrounds/bg-waves.svg')",
       },
       spacing: {
         32: "8rem",

@@ -23,16 +23,14 @@ export default function Header({ onClickDarkMode, darkMode }) {
       {/* Botões à direita */}
       <div className="flex items-center gap-4 px-6 bg-main-purple_200 bg-waves border-l-6 border-main-yellow_500 dark:bg-main-purple_900 dark:border-main-purple_100">
         <button
-          className="p-2 border-2 border-main-purple_900 rounded-full text-sm dark:border-main-yellow_200"
+          className="p-2 rounded-full text-sm bg-main-purple_900 dark:bg-main-yellow_200"
           onClick={() => onClickDarkMode(!darkMode)}
         >
-          <div>
-            {darkMode ? (
-              <SunIcon className="h-6 w-6 text-main-yellow_200" />
-            ) : (
-              <MoonIcon className="h-6 w-6  text-main-purple_900 " />
-            )}
-          </div>
+          {darkMode ? (
+            <SunIcon className="h-6 w-6 text-utils-black" />
+          ) : (
+            <MoonIcon className="h-6 w-6  text-utils-white"/>
+          )}
         </button>
         {!user && (
           <Link to="/login">
