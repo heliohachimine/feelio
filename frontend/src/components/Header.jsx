@@ -1,44 +1,37 @@
-import { HeartIcon } from "@heroicons/react/24/solid";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
+import { MoonIcon, SunIcon, HeartIcon } from "@heroicons/react/24/solid";
+import WaveIcon from "../assets/waves.svg?react";
 
-export default function Header({onClickDarkMode, darkMode}) {
+export default function Header({ onClickDarkMode, darkMode }) {
   const { user } = useAuth();
   console.log(darkMode);
 
   return (
-    <motion.header
-      className="w-full px-6 py-4 flex items-center justify-between bg-white dark:bg-gray-900 shadow-md fixed top-0 z-50"
-      initial={{ y: -60, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="text-center z-10 bg-black/40 p-6 rounded-xl backdrop-blur-sm">
-        <h1 className="text-5xl font-bold mb-2">
-          Welcome to feel.io <HeartIcon className="w-6 h-6" />
+    <motion.header className="flex justify-between w-full min-h-[8rem] fixed top-0 border-b-6 border-main-yellow_500 bg-main-purple_100 dark:bg-main-purple_900 dark:border-main-purple_100">
+      {/* Ícone à esquerda */}
+      <div className=" flex flex-row items-center gap-2 px-6 sm:pr-0">
+        <HeartIcon className="w-10 h-10 text-main-yellow_500 stroke-utils-black dark:fill-none dark:stroke-main-yellow_200" />
+        <h1 className="text-3xl font-dm text-main-purple_900 dark:text-main-yellow_200">
+          feel.io
         </h1>
-        <p className="text-lg text-gray-200">
-          Feel. Record. Discover. Each emotion is part of your journey
-        </p>
+        <WaveIcon className="animate-draw w-40 fill-none stroke-main-purple_900 stroke-20 [stroke-dasharray:5000] dark:stroke-main-yellow_200" />
       </div>
 
       {/* Botões à direita */}
-      <div className="flex items-center gap-4">
-      <button
-            className="border mt-80 px-4 py-1 rounded text-sm"
-            onClick={() => onClickDarkMode(!darkMode)}
-          >
-            <p>
-              {darkMode ? (
-                <SunIcon className="h-6 w-6 stroke-main-purple_500" />
-              ) : (
-                <MoonIcon className="h-6 w-6 stroke-main-purple_500" />
-              )}
-            </p>
-          </button>
+      <div className="flex items-center gap-4 px-6 bg-main-purple_200 bg-waves border-l-6 border-main-yellow_500 dark:bg-main-purple_900 dark:border-main-purple_100">
+        <button
+          className="p-2 rounded-full text-sm bg-main-purple_900 dark:bg-main-yellow_200"
+          onClick={() => onClickDarkMode(!darkMode)}
+        >
+          {darkMode ? (
+            <SunIcon className="h-6 w-6 text-utils-black" />
+          ) : (
+            <MoonIcon className="h-6 w-6  text-utils-white"/>
+          )}
+        </button>
         {!user && (
           <Link to="/login">
             <button className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
