@@ -13,3 +13,15 @@ def analyze(message):
     })
     response_data = response.json()
     return json.loads(response_data["response"])
+
+def analyze_days(days):
+    print(days)
+    prompt = f"De acordo com esse json com minha rotina {days}, me console (o texto não pode conter formatação)"
+    response = requests.post(OLLAMA_URL, json={
+        "model": "llama3.2:latest",
+        "prompt": prompt,
+        "stream": False
+    })
+    print(response.json())
+    response_data = response.json()
+    return response_data["response"]
