@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 from .models import Daily, FeelingEnum, User
 from .database import db
 from app.generator import analyze
-from flask_jwt_extended import jwt_required, create_access_token
+from flask_jwt_extended import jwt_required, create_access_token, get_jwt_identity
 
 routes = Blueprint('routes', __name__)
 
@@ -10,12 +10,17 @@ routes = Blueprint('routes', __name__)
 @jwt_required()
 def create_daily():
     data = request.get_json()
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({"error": "Usuário não encontrado"}), 404
 
     message = analyze(data.get("description"))
 
     daily = Daily(
         description=data.get("description"),
-        feeling=FeelingEnum(message['feeling'])
+        feeling=FeelingEnum(message['feeling']),
+        user_id=user.id
     )
     db.session.add(daily)
     db.session.commit()
@@ -24,8 +29,12 @@ def create_daily():
 @routes.route("/daily", methods=["GET"])
 @jwt_required()
 def get_daily():
-    all = Daily.query.all()
-    return jsonify([d.to_dict() for d in all])
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({"error": "Usuário não encontrado"}), 404
+    daily_user = Daily.query.filter_by(user_id=user.id).all()
+    return jsonify([d.to_dict() for d in daily_user])
 
 
 @routes.route("/login", methods=["POST"])

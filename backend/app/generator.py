@@ -11,8 +11,5 @@ def analyze(message):
         "prompt": prompt,
         "stream": False
     })
-    response_data = response.json()  # Isso pega o JSON retornado pela API do Llama
-
-    # Retornando a resposta de forma adequada
-    print("TODO O RESPONSE", response_data["response"])
+    response_data = response.json()
     return json.loads(response_data["response"])

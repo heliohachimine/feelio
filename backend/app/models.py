@@ -3,7 +3,8 @@ from sqlalchemy import Enum
 import enum
 from datetime import date
 from datetime import datetime
-from sqlalchemy.orm import validates
+from sqlalchemy.orm import validates, relationship
+from sqlalchemy import ForeignKey
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
@@ -12,6 +13,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
+    dailies = db.relationship("Daily", back_populates="user")
     # name = db.Column(db.String(40), nullable=False)
 
     def set_password(self, password):
@@ -43,7 +45,9 @@ class Daily(db.Model):
     feeling = db.Column(Enum(FeelingEnum), nullable=False)
     humor_score = db.Column(db.Integer, nullable=False, default=0, )
     date = db.Column(db.Date, nullable=False, default=date.today)
+    user_id = db.Column(db.Integer, ForeignKey("user.id", name="fk_daily_user_id"))
 
+    user = db.relationship("User", back_populates="dailies")
     @validates('humor_score')
     def validate_humor_score(self, key, value):
         if value < -5 or value > 5:
