@@ -3,6 +3,7 @@ from .models import Daily, FeelingEnum, User
 from .database import db
 from app.generator import analyze, analyze_days
 from flask_jwt_extended import jwt_required, create_access_token, get_jwt_identity
+from datetime import date, timedelta
 
 routes = Blueprint('routes', __name__)
 
@@ -45,10 +46,17 @@ def get_daily_analyze():
     user = User.query.get(user_id)
     if not user:
         return jsonify({"error": "Usuário não encontrado"}), 404
-    daily_user = Daily.query.filter_by(user_id=user.id).all()
+
+    # Pega o parâmetro ?days=7 (ou valor padrão 7)
+    days_param = request.args.get("days", default=7, type=int)
+    data_inicial = date.today() - timedelta(days=days_param)
+
+    # Filtra os registros a partir da data e do usuário
+    daily_user = Daily.query.filter_by(user_id=user.id).filter(Daily.date >= data_inicial).all()
+
     days = [d.description for d in daily_user]
-    print(days)
     message = analyze_days(days)
+
     return {
         "message": message
     }

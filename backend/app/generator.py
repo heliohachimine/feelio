@@ -15,7 +15,6 @@ def analyze(message):
     return json.loads(response_data["response"])
 
 def analyze_days(days):
-    print(days)
     prompt = f"De acordo com esse json com minha rotina {days}, me console (o texto não pode conter formatação)"
     response = requests.post(OLLAMA_URL, json={
         "model": "llama3.2:latest",
